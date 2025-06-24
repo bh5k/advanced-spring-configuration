@@ -1,11 +1,13 @@
 package com.pluralsight.beanconfig.controller;
 
+import com.pluralsight.beanconfig.model.Pie;
 import com.pluralsight.beanconfig.service.PieService;
 import com.pluralsight.beanconfig.util.PieCalculator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-@RestController
+import java.util.List;
+
 @RequestMapping("/pie")
 public class PieController {
 
@@ -18,10 +20,8 @@ public class PieController {
         this.pieCalculator = pieCalculator;
     }
 
-    @GetMapping("/order")
-    public String orderPie(@RequestParam String flavor, @RequestParam int diameter) {
-        String result = pieService.bakePie(flavor);
-        int slices = pieCalculator.calculateSlices(diameter);
-        return result + " It will have " + slices + " slices.";
+    @GetMapping("/pies")
+    public List<Pie> getPies() {
+        return pieService.getAvailablePies();
     }
 }

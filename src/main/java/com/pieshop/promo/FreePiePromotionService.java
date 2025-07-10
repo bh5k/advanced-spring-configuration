@@ -1,0 +1,7 @@
+package com.pieshop.promo;
+
+public class FreePiePromotionService {
+    public void announceFreePie() {
+        System.out.println("🎉 FREE PIE for everyone today!");
+    }
+}

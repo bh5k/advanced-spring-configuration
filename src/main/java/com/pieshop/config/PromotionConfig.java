@@ -1,0 +1,16 @@
+package com.pieshop.config;
+
+import com.pieshop.promo.FreePiePromotionService;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Conditional;
+import org.springframework.context.annotation.Configuration;
+
+@Configuration
+public class PromotionConfig {
+
+    @Bean
+    @Conditional(OnFreePiePromotionCondition.class)
+    public FreePiePromotionService freePiePromotionService() {
+        return new FreePiePromotionService();
+    }
+}
